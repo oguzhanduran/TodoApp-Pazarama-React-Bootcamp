@@ -47,12 +47,9 @@ const submitUpdate = value => {
             setEdit({id: todo.id, value: todo.text})} // Yeni bir id değeri ve girilen değeri set ettik.
             className="edit-icon"
             />
-
         </div>
-
-     </div>
+    </div>
     ))
-    
 }
 
 export default Todo

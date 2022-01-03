@@ -1,14 +1,14 @@
 import { useState, useEffect} from 'react'
 import TodoForm from "./TodoForm"; // Componentleri import ederken oluşturacağımız değişken büyük harfli olmalı.
 import Todo from './Todo';
-import axios from 'axios';
+// import axios from 'axios';
 
 // TodoList Componentini doğrudan App.js'e import ettiğimiz için bu componenti ana component gibi düşünebiliriz yani diğer tüm componentleri bu componente import edip altta istediğimiz sırada return ettik. // listeleme işlemi yapacağımız için "[]" kullandık.
     function TodoList( ) {
 
     const [todos, setTodos] = useState([]); 
 
-    /*Daha sonra local stroge'a gönderdiğimiz veriyi almalıyız bunu da getItem methoduyla yapıyoruz ve getItem methodu sadece key parametresi alır. Daha önce stringe çevirdiğimiz için verileri bu şekilde aldığımızda string olarak gelir ve biz bunu kendi uygulamamızda kullanabilmemiz için objeye çevirmemiz gerekiyor, bunuda JSON.parse methoduyla yaptık. Yani JSON.parse string ifadeleri objeye çevirir. */
+    /*Daha sonra local stroge'a gönderdiğimiz veriyi almalıyız bunu da getItem methoduyla yapıyoruz ve getItem methodu sadece key parametresi alır. Daha önce stringe çevirdiğimiz için verileri bu şekilde aldığımızda string olarak gelir ve biz bunu kendi uygulamamızda kullanabilmemiz için objeye çevirmemiz gerekiyor, bunuda JSON.parse methoduyla yaptık. Yani JSON.parse string ifadeleri objeye çevirir.*/
     useEffect(() => {
     const todos = localStorage.getItem("todos")
     setTodos(JSON.parse(todos))
@@ -19,11 +19,11 @@ import axios from 'axios';
     localStorage.setItem("todos", JSON.stringify(todos))
     })
 
-    const baseUrl = "https://61c458fef1af4a0017d994c8.mockapi.io/Crud"
+    //  const baseUrl = "https://61c458fef1af4a0017d994c8.mockapi.io/Crud"
 
-    const getData = async () => {
-        return await axios.get(`${baseUrl}`)
-    }
+    // const getData = async () => {
+    //     return await axios.get(`${baseUrl}`)
+    // }
 
     // useEffect(() => {
     //      axios.get(`${baseUrl}/`)
@@ -35,12 +35,12 @@ import axios from 'axios';
     
         // 3 karekterden az veya sadece (+,-,*,?,!) gibi girdilerden oluşmuyorsa girdiyi dön aksi halde dönme demiş olduk.
     const addTodo = async (todo) => {
-        await axios.post(`${baseUrl}/`, todo)
+        // await axios.post(`${baseUrl}/`, todo)
         if(!/(.*[a-z]){3}/i.test(todo.text)) {
          return;
         }
         
-    getData().then(r=>setTodos(r.data))
+    // getData().then(r=>setTodos(r.data))
     const newTodos = [ todo, ...todos  ]; 
         setTodos(newTodos);
         };
@@ -58,7 +58,7 @@ import axios from 'axios';
 
         // Mevcut todo listesini filtreledik ve dedik ki üstüne tıklanmayanlar kalsın daha sonrada değişikliği set ettik.
     const removeTodo =  (id) => {
-         axios.delete(`${baseUrl}/${id}`)
+        //  axios.delete(`${baseUrl}/${id}`)
       
     const removeArr = [...todos].filter(todo => todo.id !== id)
         setTodos(removeArr);
