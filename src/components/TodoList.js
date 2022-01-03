@@ -19,7 +19,7 @@ import Todo from './Todo';
     localStorage.setItem("todos", JSON.stringify(todos))
     })
 
-    //  const baseUrl = "https://61c458fef1af4a0017d994c8.mockapi.io/Crud"
+     const baseUrl = "https://61c458fef1af4a0017d994c8.mockapi.io/Crud"
 
     // const getData = async () => {
     //     return await axios.get(`${baseUrl}`)
@@ -35,7 +35,7 @@ import Todo from './Todo';
     
         // 3 karekterden az veya sadece (+,-,*,?,!) gibi girdilerden oluşmuyorsa girdiyi dön aksi halde dönme demiş olduk.
     const addTodo = async (todo) => {
-        // await axios.post(`${baseUrl}/`, todo)
+        await axios.post(`${baseUrl}/`, todo)
         if(!/(.*[a-z]){3}/i.test(todo.text)) {
          return;
         }
@@ -58,7 +58,7 @@ import Todo from './Todo';
 
         // Mevcut todo listesini filtreledik ve dedik ki üstüne tıklanmayanlar kalsın daha sonrada değişikliği set ettik.
     const removeTodo =  (id) => {
-        //  axios.delete(`${baseUrl}/${id}`)
+         axios.delete(`${baseUrl}/${id}`)
       
     const removeArr = [...todos].filter(todo => todo.id !== id)
         setTodos(removeArr);
